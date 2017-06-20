@@ -1,0 +1,117 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="Solution_Path">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="SolutionPath" type="xs:string" minOccurs="0" />
+                <xs:element name="SolutionVersion" type="xs:string" minOccurs="0" />
+                <xs:element name="PlogVersion" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="ModificationDate" msdata:DateTimeMode="Utc" type="xs:dateTime" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="PVS-Studio_Analysis_Log">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="FavIcon" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Level" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="DefaultOrder" type="xs:int" minOccurs="0" />
+                <xs:element name="ErrorCode" type="xs:string" minOccurs="0" />
+                <xs:element name="Message" type="xs:string" />
+                <xs:element name="Project" type="xs:string" minOccurs="0" />
+                <xs:element name="ShortFile" type="xs:string" minOccurs="0" />
+                <xs:element name="Line" type="xs:int" />
+                <xs:element name="FalseAlarm" type="xs:boolean" minOccurs="0" />
+                <xs:element name="File" type="xs:string" />
+                <xs:element name="CodePrev" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="CodeCurrent" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="CodeNext" type="xs:unsignedInt" minOccurs="0" />
+                <xs:element name="TrialMessage" type="xs:boolean" minOccurs="0" />
+                <xs:element name="Analyzer" type="xs:int" minOccurs="0" />
+                <xs:element name="LineExtension" type="xs:string" minOccurs="0" />
+                <xs:element name="Retired" type="xs:boolean" default="false" minOccurs="0" />
+                <xs:element name="AnalyzedSourceFiles" type="xs:string" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:choice>
+      </xs:complexType>
+      <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+        <xs:selector xpath=".//PVS-Studio_Analysis_Log" />
+        <xs:field xpath="Line" />
+        <xs:field xpath="Message" />
+        <xs:field xpath="File" />
+      </xs:unique>
+    </xs:element>
+  </xs:schema>
+  <Solution_Path>
+    <SolutionPath>C:\Users\Sofon\Desktop\WindowsFormsApplication1\WindowsFormsApplication1.sln</SolutionPath>
+    <SolutionVersion>15.0</SolutionVersion>
+    <PlogVersion>4</PlogVersion>
+    <ModificationDate>2017-06-06T23:25:39.6626193Z</ModificationDate>
+  </Solution_Path>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>1</Level>
+    <DefaultOrder>1</DefaultOrder>
+    <ErrorCode>V3110</ErrorCode>
+    <Message>Possible infinite recursion inside 'slova' property.</Message>
+    <Project>WindowsFormsApplication1</Project>
+    <ShortFile>Field.cs</ShortFile>
+    <Line>45</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\Sofon\Desktop\WindowsFormsApplication1\Field.cs</File>
+    <CodePrev>123</CodePrev>
+    <CodeCurrent>176505</CodeCurrent>
+    <CodeNext>125</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>45,50,41</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>2</DefaultOrder>
+    <ErrorCode>V3008</ErrorCode>
+    <Message>The 'helpdub1' variable is assigned values twice successively. Perhaps this is a mistake. Check lines: 114, 92.</Message>
+    <Project>WindowsFormsApplication1</Project>
+    <ShortFile>Form1.cs</ShortFile>
+    <Line>114</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\Sofon\Desktop\WindowsFormsApplication1\Form1.cs</File>
+    <CodePrev>0</CodePrev>
+    <CodeCurrent>810803566</CodeCurrent>
+    <CodeNext>3232834779</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension>114,92</LineExtension>
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+  <PVS-Studio_Analysis_Log>
+    <FavIcon>false</FavIcon>
+    <Level>3</Level>
+    <DefaultOrder>3</DefaultOrder>
+    <ErrorCode>V3022</ErrorCode>
+    <Message>Expression 'textboxfull' is always true.</Message>
+    <Project>WindowsFormsApplication1</Project>
+    <ShortFile>Form1.cs</ShortFile>
+    <Line>144</Line>
+    <FalseAlarm>false</FalseAlarm>
+    <File>C:\Users\Sofon\Desktop\WindowsFormsApplication1\Form1.cs</File>
+    <CodePrev>909016969</CodePrev>
+    <CodeCurrent>1478985</CodeCurrent>
+    <CodeNext>123</CodeNext>
+    <TrialMessage>false</TrialMessage>
+    <Analyzer>4</Analyzer>
+    <LineExtension />
+    <Retired>false</Retired>
+    <AnalyzedSourceFiles />
+  </PVS-Studio_Analysis_Log>
+</NewDataSet>

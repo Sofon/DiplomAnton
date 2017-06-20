@@ -10,5 +10,7 @@ namespace WindowsFormsApplication1
     {
         public int i { get; set; }
         public int j { get; set; }
+       
     }
+    
 }
