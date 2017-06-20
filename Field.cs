@@ -254,6 +254,8 @@ namespace WindowsFormsApplication1
                         }
 
                         else
+
+                   
                         {
                             if ((y - 1 >= 0 && !(ColorMass[x, y - 1].ReadOnly)) == false)
                             {
