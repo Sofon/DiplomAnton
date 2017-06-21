@@ -31,7 +31,7 @@ namespace WindowsFormsApplication1
         TextBox[,] ColorMass = new TextBox[5, 5];
         List<Tuple<int, int>> ss = new List<Tuple<int, int>>();
         List<Tuple<int, int>> textboxreadonly = new List<Tuple<int, int>>();
-        int itb, jtb, itbPrev, jtbPrev, dl, dl1, dl2;
+        int itbPrev, jtbPrev, dl, dl1, dl2;
         int timeLeft = 12;
 
         private void button3_Click(object sender, EventArgs e)
@@ -86,14 +86,15 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            
+
             textBox28.Clear();
+
             List<string> helpdub = new List<string>();
             List<string> helpdub1 = new List<string>();
             List<string> helpdub2 = new List<string>();
             Pole.ReadMap();
             textboxreadonly.Clear();
-            Pole.setslovar(wordtree);
+            Pole.nexthelp();
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
                 {
@@ -109,8 +110,8 @@ namespace WindowsFormsApplication1
                 {
                     paths p = new paths();
                     p.add(i, j);
-                    help.AddRange(Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p,"",false));
-                   
+                    help.AddRange(Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false));
+
                 }
             Pole.setslovar(revwordtree);
             for (int i = 0; i < textboxreadonly.Count; i++)
@@ -118,8 +119,8 @@ namespace WindowsFormsApplication1
                 {
                     paths p = new paths();
                     p.add(i, j);
-                    
-                    foreach (var item in Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "",false))
+
+                    foreach (var item in Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false))
                     {
                         help.Add(Reverse(item));
                     }
@@ -127,10 +128,10 @@ namespace WindowsFormsApplication1
                 }
 
 
-            helpdub1 = help.Distinct().ToList();
+            helpdub1 = help.Distinct().OrderByDescending(x => x.Length).ToList<string>();
             //foreach (var item in helpdub1)
             //{
-                
+
             //    foreach (var word in wordtree.GetWords(item))
             //    {
             //        if (word.Length==item.Length+1)
@@ -138,8 +139,8 @@ namespace WindowsFormsApplication1
             //            helpdub2.Add(word);
             //        }
             //    }
-           // }
-            
+            // }
+
 
             List<string> f = new List<string>(helpdub1.Distinct().Except(slova));
             int lineC = f.Count;
@@ -158,43 +159,7 @@ namespace WindowsFormsApplication1
             return new string(charArray);
         }
 
-        public Form1()
-        {
-            dl1 = 0;
-            dl2 = 0;
-            itb = 0;
-            jtb = 0;
-            itbPrev = 50;
-            jtbPrev = 50;
-            bool textboxfull = true;
-            InitializeComponent();
-            button2.Enabled = false;
-            button3.Enabled = false;
-            button4.Enabled = false;
-            foreach (Control c in this.Controls)
-            {
-                if (c.GetType() == typeof(TextBox))
-                {
-                    c.BackColor = Color.White;
-                    if (textboxfull)
-                    {
-                        if (!(c.Text == ""))
-                        {
-                            int index = Int32.Parse(c.Text) / 5;
-                            int index2 = Int32.Parse(c.Text) % 5;
-                            ColorMass[index, index2] = c as TextBox;
 
-                            c.Text = "";
-                        }
-
-                    }
-
-                }
-
-            }
-            Pole.ColorMass = ColorMass;
-
-        }
 
         private void textBox28_TextChanged(object sender, EventArgs e)
         {
@@ -241,16 +206,41 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public Form1()
         {
-            timer1.Stop();
-            timeLeft = 120;
-            timer1.Start();
-            label6.Text = "0";
-            label7.Text = "0";
-            button2.Enabled = true;
-            button3.Enabled = true;
-            button4.Enabled = true;
+            dl1 = 0;
+            dl2 = 0;
+            itbPrev = 50;
+            jtbPrev = 50;
+            bool textboxfull = true;
+            InitializeComponent();
+            button2.Enabled = false;
+            button3.Enabled = false;
+            button4.Enabled = false;
+            button5.Enabled = true;
+            foreach (Control c in this.Controls)
+            {
+                if (c.GetType() == typeof(TextBox))
+                {
+                    c.BackColor = Color.White;
+                    if (textboxfull)
+                    {
+                        if (!(c.Text == ""))
+                        {
+                            int index = Int32.Parse(c.Text) / 5;
+                            int index2 = Int32.Parse(c.Text) % 5;
+                            ColorMass[index, index2] = c as TextBox;
+
+                            c.Text = "";
+                        }
+
+                    }
+
+                }
+
+            }
+            Pole.ColorMass = ColorMass;
+
             foreach (Control c in this.Controls)
             {
                 if (c.GetType() == typeof(TextBox))
@@ -267,7 +257,6 @@ namespace WindowsFormsApplication1
             slovar.Close();
             Random rand = new Random();
             int temp;
-
             temp = rand.Next(2845); //число 5ти буквенных слов в словаре
             StreamReader str = new StreamReader("ru.txt", Encoding.Default);
             while (!str.EndOfStream)
@@ -282,11 +271,6 @@ namespace WindowsFormsApplication1
                         textBox13.Text = st.Substring(2, 1);
                         textBox14.Text = st.Substring(3, 1);
                         textBox15.Text = st.Substring(4, 1);
-                        textBox11.ReadOnly = true;
-                        textBox12.ReadOnly = true;
-                        textBox13.ReadOnly = true;
-                        textBox14.ReadOnly = true;
-                        textBox15.ReadOnly = true;
                         textBox11.BackColor = Color.White;
                         textBox12.BackColor = Color.White;
                         textBox13.BackColor = Color.White;
@@ -308,6 +292,24 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            timeLeft = 120;
+            timer1.Start();
+            label6.Text = "0";
+            label7.Text = "0";
+            button2.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
+
+
+
+
+
+        }
+
 
         private void textBox1_KeyPress_1(object sender, KeyPressEventArgs e)
         {
@@ -465,8 +467,7 @@ namespace WindowsFormsApplication1
                 }
             }
         }
-       
 
 
-    }  
+    }
 }

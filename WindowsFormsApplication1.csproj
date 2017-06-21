@@ -89,6 +89,7 @@
     <Compile Include="ITrie.cs" />
     <Compile Include="path.cs" />
     <Compile Include="paths.cs" />
+    <Compile Include="position.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Trie.cs" />

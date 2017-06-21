@@ -14,7 +14,6 @@ namespace WindowsFormsApplication1
         int MapWidht;
         int MapHeight;
         int[,] WayMap;
-        public int step;
         int rev;
         Trie wordtree = new Trie();
         string alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
@@ -74,6 +73,24 @@ namespace WindowsFormsApplication1
 
 
         }
+        public void nexthelp()
+        {
+
+            for (int i = 0; i < 5; i++)
+                for (int j = 0; j < 5; j++)
+                {
+                    textboxmass[i, j] = ColorMass[i, j].Text;
+                    ColorMass[i, j].BackColor = System.Drawing.Color.White;
+                    if (ColorMass[i, j].Text != String.Empty)
+                    {
+                        ColorMass[i, j].ReadOnly = true;
+                    }
+                }
+
+           
+
+
+        }
 
         public void ReadMap()
         {
@@ -97,51 +114,9 @@ namespace WindowsFormsApplication1
 
             WayMap = new int[5, 5];
         }
-        public List<string> FindWave(int startX, int startY, int targetX, int targetY, Trie wordtree)
-        {
-            bool add = true;
-            string word;
-            bool wordcheck;
-            ICollection<string> buff;
-            List<string> bufflist = new List<string>();
-            List<string> rusult = new List<string>();
-            List<string> help = new List<string>();
-            int[,] cMap = new int[MapHeight, MapWidht];
-            int x, y = 0;
-            for (x = 0; x < MapHeight; x++)
-                for (y = 0; y < MapWidht; y++)
-                {
-                    if (Map[x, y] == 1)
-                    {
-                        cMap[x, y] = -2;//индикатор стены
-                    }
-                    else
-                    {
-                        cMap[x, y] = -1;//индикатор еще не ступали сюда
-                    }
+        
 
-                }
-            cMap[targetX, targetY] = 0;//Начинаем с конца
-            word = "";
-            step = 0;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int j = 0; j < 4; j++)
-                {
-                    switch (getstep(i, j))
-                    {
-                        default:
-                            break;
-                    }
-                }
-            }
-
-
-
-            return help;
-        }
-
-        public List<string> FindWord(int startX, int startY, paths p, string word,bool addchar)
+        public List<string> FindWord(int startX, int startY, paths p, string word, bool addchar)
         {
             List<string> pref = new List<string>();
             List<string> pref1 = new List<string>();
@@ -160,11 +135,11 @@ namespace WindowsFormsApplication1
                 {
                     for (int j = 0; j < 5; j++)
                     {
-                      
 
-                        if (textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
+                       
+                        if (!addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
                         {
-                            switch (getstep(i, j))
+                            switch (Getstep(i, j))
                             {
                                 case 1:
 
@@ -174,27 +149,55 @@ namespace WindowsFormsApplication1
                                         word = word + textboxmass[i, j];
                                         foreach (var item in alp)
                                         {
-                                            
                                             if (wordtree.HasWord(word + item))
-                                            {   
+                                            {
                                                 pref.Add(word + item);
                                             }
-                                            if (wordtree.GetWords(word + alp).Count > 0 && !addchar)
-                                            {
-                                                addchar = true;
-                                                word = word + alp;
-                                                pref1 = FindWord(i, j, p, word, addchar);
-                                            }
+                                           
                                         }
+
+
                                         p.add(i, j);
                                         pref1 = FindWord(i, j, p, word,addchar);
                                         pref.AddRange(pref1);
+                                        foreach (var item in alp)
+                                        {
+                                            if (wordtree.GetWords(word + item).Count > 0)
+                                            {
+                                                foreach (var x in Getnextstep(i, j))
+                                                {
+                                                    p.add(x.Item1, x.Item2);
+                                                    addchar = true;
+                                                    pref1 = FindWord(i, j, p, word + item, addchar);
+                                                }
+
+                                            }
+                                        }
+                                        pref.AddRange(pref1);
                                         return pref;
                                     }
-                                    break;
-                             
+
+ 
+
+
+
                                 case 0:
                                     return pref;
+                            }
+                            if (addchar && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j) && ColorMass[i, j].ReadOnly)
+                            {
+
+                                if (wordtree.GetWords(word + textboxmass[i, j]).Count > 0)
+                                {
+                                    word = word + textboxmass[i, j];
+                                    if (wordtree.HasWord(word))
+                                    {
+                                        pref.Add(word);
+                                    }
+                                    p.add(i, j);
+                                    pref1 = FindWord(i, j, p, word, addchar);
+                                }
+
                             }
                         }
                     }
@@ -209,8 +212,7 @@ namespace WindowsFormsApplication1
 
         private bool smeg(int x, int y, int i, int j)
         {
-            bool smeg;
-            smeg = false;
+
             if ((y == j && x == i - 1) || (y == j - 1 && x == i) || (x == i + 1 && y == j) || (y == j + 1 && x == i))
             {
                 return true;
@@ -224,12 +226,14 @@ namespace WindowsFormsApplication1
 
         }
 
-        private int getstep(int x, int y)
+
+
+        private int Getstep(int x, int y)
         {
 
             int numstep;
             numstep = 0;
-            if ((!(!(x - 1 < 0) && !ColorMass[x - 1, y].ReadOnly) && !(!(y + 1 > 4) && !ColorMass[x, y + 1].ReadOnly)&& !(!(x + 1 > 4) && !ColorMass[x + 1, y].ReadOnly) && !( !(y - 1 < 0) && !ColorMass[x, y-1].ReadOnly)))
+            if ((!(!(x - 1 < 0) && !ColorMass[x - 1, y].ReadOnly) && !(!(y + 1 > 4) && !ColorMass[x, y + 1].ReadOnly) && !(!(x + 1 > 4) && !ColorMass[x + 1, y].ReadOnly) && !(!(y - 1 < 0) && !ColorMass[x, y - 1].ReadOnly)))
             {
 
                 numstep = 0;
@@ -320,7 +324,50 @@ namespace WindowsFormsApplication1
             }
         }
 
+        private List<Tuple<int, int>> Getnextstep(int x, int y)
+        {
+            List<Tuple<int, int>> core = new List<Tuple<int, int>>();
+            if ((!(!(x - 1 < 0) && !ColorMass[x - 1, y].ReadOnly) && !(!(y + 1 > 4) && !ColorMass[x, y + 1].ReadOnly) && !(!(x + 1 > 4) && !ColorMass[x + 1, y].ReadOnly) && !(!(y - 1 < 0) && !ColorMass[x, y - 1].ReadOnly)))
+            {
 
 
+            }
+            else
+            {
+                if ((x - 1 >= 0 && !(ColorMass[x - 1, y].ReadOnly)) == false)
+                {
+                    core.Add(new Tuple<int, int>(x - 1, y));
+                }
+                else
+                {
+                    if ((y + 1 <= 4 && !(ColorMass[x, y + 1].ReadOnly)) == false)
+                    {
+                        core.Add(new Tuple<int, int>(x, y + 1));
+                    }
+                    else
+                    {
+                        if ((x + 1 <= 4 && !(ColorMass[x + 1, y].ReadOnly)) == false)
+                        {
+                            core.Add(new Tuple<int, int>(x + 1, y));
+                        }
+
+                        else
+
+
+                        {
+                            if ((y - 1 >= 0 && !(ColorMass[x, y - 1].ReadOnly)) == false)
+                            {
+                                core.Add(new Tuple<int, int>(x, y - 1));
+                            }
+                        }
+
+                    }
+
+
+                }
+
+            }
+            return core;
+        }
     }
 }
