@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using rm.Trie;
+using System.Drawing;
+using System.Threading;
 namespace WindowsFormsApplication1
 {
     class Field
@@ -15,6 +17,7 @@ namespace WindowsFormsApplication1
         int MapHeight;
         int[,] WayMap;
         int rev;
+        int sliper = 2;
         Trie wordtree = new Trie();
         string alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
@@ -22,6 +25,8 @@ namespace WindowsFormsApplication1
         char[] Bukvi = Enumerable.Range(0, 32).Select((x, i) => (char)('а' + i)).ToArray();
         public int TC;
         private int blocki, blockj;
+        public Label words;
+        public Label puti;
         public TextBox[,] ColorMass = new TextBox[5, 5];
         public TextBox[,] Textbox
         {
@@ -87,8 +92,23 @@ namespace WindowsFormsApplication1
                     }
                 }
 
+
+
            
 
+
+        }
+
+        public void Afterhelp()
+        {
+
+            for (int i = 0; i < 5; i++)
+                for (int j = 0; j < 5; j++)
+                {
+                 
+                        ColorMass[i, j].ReadOnly = false;
+
+                }
 
         }
 
@@ -126,19 +146,29 @@ namespace WindowsFormsApplication1
 
 
 
+                ColorMass[startX, startY].BackColor = Color.Red;
+                words.Text = word;
+                puti.Text = p.ToString();
+                System.Threading.Thread.Sleep(sliper);
 
-                int[,] cMap = new int[MapHeight, MapWidht];
-
-
-                cMap[startX, startY] = 1;
                 for (int i = 0; i < 5; i++)
                 {
                     for (int j = 0; j < 5; j++)
                     {
-
-                       
+                        
+                        
                         if (!addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
                         {
+                            ColorMass[i, j].BackColor = Color.Yellow;
+                            ColorMass[i, j].Invalidate();
+                            ColorMass[i, j].Update();
+                            words.Text = word;
+                            words.Invalidate();
+                            words.Update();
+                            puti.Text = p.ToString();
+                            puti.Invalidate();
+                            puti.Update();
+                            System.Threading.Thread.Sleep(sliper);
                             switch (Getstep(i, j))
                             {
                                 case 1:
@@ -149,6 +179,10 @@ namespace WindowsFormsApplication1
                                         word = word + textboxmass[i, j];
                                         foreach (var item in alp)
                                         {
+                                            ColorMass[i, j].BackColor = Color.Green;
+                                            ColorMass[i, j].Invalidate();
+                                            ColorMass[i, j].Update();
+                                            System.Threading.Thread.Sleep(sliper);
                                             if (wordtree.HasWord(word + item))
                                             {
                                                 pref.Add(word + item);
@@ -203,12 +237,23 @@ namespace WindowsFormsApplication1
                     }
 
                 }
+                for (int i = 0; i < 5; i++)
+                {
+                    for (int j = 0; j < 5; j++)
+                    {
+                        ColorMass[i, j].BackColor = Color.White;
+                    }
+                }
 
-
+                       
             }
+            
             return pref;
 
         }
+
+
+
 
         private bool smeg(int x, int y, int i, int j)
         {

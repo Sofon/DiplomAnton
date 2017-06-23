@@ -150,6 +150,7 @@ namespace WindowsFormsApplication1
                 textBox28.Text = textBox28.Text + f.ElementAt(line) + "\r\n";  //вернуть на f как было.
             }
             help.Clear();
+            Pole.Afterhelp();
         }
 
         public static string Reverse(string s)
@@ -240,7 +241,8 @@ namespace WindowsFormsApplication1
 
             }
             Pole.ColorMass = ColorMass;
-
+            Pole.words = label8;
+            Pole.puti = label9;
             foreach (Control c in this.Controls)
             {
                 if (c.GetType() == typeof(TextBox))
@@ -292,6 +294,7 @@ namespace WindowsFormsApplication1
                 }
             }
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
