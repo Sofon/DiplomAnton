@@ -17,12 +17,11 @@ namespace WindowsFormsApplication1
         int MapHeight;
         int[,] WayMap;
         int rev;
-        int sliper = 2;
+        int sliper =0;
         Trie wordtree = new Trie();
         string alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
 
-        char[] Bukvi = Enumerable.Range(0, 32).Select((x, i) => (char)('а' + i)).ToArray();
         public int TC;
         private int blocki, blockj;
         public Label words;
@@ -146,10 +145,10 @@ namespace WindowsFormsApplication1
 
 
 
-                ColorMass[startX, startY].BackColor = Color.Red;
-                words.Text = word;
-                puti.Text = p.ToString();
-                System.Threading.Thread.Sleep(sliper);
+                //ColorMass[startX, startY].BackColor = Color.Red;
+                //words.Text = word;
+                //puti.Text = p.ToString();
+                //System.Threading.Thread.Sleep(sliper);
 
                 for (int i = 0; i < 5; i++)
                 {
@@ -159,16 +158,16 @@ namespace WindowsFormsApplication1
                         
                         if (!addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
                         {
-                            ColorMass[i, j].BackColor = Color.Yellow;
-                            ColorMass[i, j].Invalidate();
-                            ColorMass[i, j].Update();
-                            words.Text = word;
-                            words.Invalidate();
-                            words.Update();
-                            puti.Text = p.ToString();
-                            puti.Invalidate();
-                            puti.Update();
-                            System.Threading.Thread.Sleep(sliper);
+                            //ColorMass[i, j].BackColor = Color.Yellow;
+                            //ColorMass[i, j].Invalidate();
+                            //ColorMass[i, j].Update();
+                            //words.Text = word;
+                            //words.Invalidate();
+                            //words.Update();
+                            //puti.Text = p.ToString();
+                            //puti.Invalidate();
+                            //puti.Update();
+                           // System.Threading.Thread.Sleep(sliper);
                             switch (Getstep(i, j))
                             {
                                 case 1:
@@ -179,10 +178,10 @@ namespace WindowsFormsApplication1
                                         word = word + textboxmass[i, j];
                                         foreach (var item in alp)
                                         {
-                                            ColorMass[i, j].BackColor = Color.Green;
-                                            ColorMass[i, j].Invalidate();
-                                            ColorMass[i, j].Update();
-                                            System.Threading.Thread.Sleep(sliper);
+                                           // ColorMass[i, j].BackColor = Color.Green;
+                                            //ColorMass[i, j].Invalidate();
+                                           // ColorMass[i, j].Update();
+                                        //    System.Threading.Thread.Sleep(sliper);
                                             if (wordtree.HasWord(word + item))
                                             {
                                                 pref.Add(word + item);
@@ -237,13 +236,13 @@ namespace WindowsFormsApplication1
                     }
 
                 }
-                for (int i = 0; i < 5; i++)
-                {
-                    for (int j = 0; j < 5; j++)
-                    {
-                        ColorMass[i, j].BackColor = Color.White;
-                    }
-                }
+                //for (int i = 0; i < 5; i++)
+                //{
+                //    for (int j = 0; j < 5; j++)
+                //    {
+                //        ColorMass[i, j].BackColor = Color.White;
+                //    }
+                //}
 
                        
             }

@@ -11,6 +11,8 @@ using System.IO;
 using WindowsFormsApplication1;
 using rm.Trie;
 using System.Timers;
+using System.Diagnostics;
+
 namespace WindowsFormsApplication1
 {
 
@@ -86,7 +88,8 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            System.Diagnostics.Stopwatch sw = new Stopwatch();
+            sw.Start();
             textBox28.Clear();
 
             List<string> helpdub = new List<string>();
@@ -149,8 +152,11 @@ namespace WindowsFormsApplication1
 
                 textBox28.Text = textBox28.Text + f.ElementAt(line) + "\r\n";  //вернуть на f как было.
             }
+
             help.Clear();
             Pole.Afterhelp();
+            sw.Stop();
+            label9.Text = (sw.ElapsedMilliseconds / 100.0).ToString();
         }
 
         public static string Reverse(string s)
@@ -209,6 +215,7 @@ namespace WindowsFormsApplication1
 
         public Form1()
         {
+            SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
             dl1 = 0;
             dl2 = 0;
             itbPrev = 50;

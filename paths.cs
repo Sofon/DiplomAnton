@@ -35,15 +35,14 @@ namespace WindowsFormsApplication1
             {
           
                 bool un = false;
-            if (x.Contains(xx))
+
+            for (int i = 0; i < x.Count; i++)
             {
-                if (y.Contains(yy))
+                if (x[i]==xx && y[i]==yy)
                 {
                     un = true;
                 }
             }
-
-
             return un;
             }
 
