@@ -102,7 +102,7 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
                 {
-                    if (ColorMass[i, j].ReadOnly)
+                    if (ColorMass[i, j].Text!="")
                     {
                         textboxreadonly.Add(new Tuple<int, int>(i, j));
                     }
@@ -113,7 +113,6 @@ namespace WindowsFormsApplication1
                 for (int j = 0; j < textboxreadonly.Count; j++)
                 {
                     paths p = new paths();
-                    p.add(i, j);
                     help.AddRange(Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false));
               
 
@@ -123,7 +122,6 @@ namespace WindowsFormsApplication1
                 for (int j = 0; j < textboxreadonly.Count; j++)
                 {
                     paths p = new paths();
-                    p.add(i, j);
 
                     foreach (var item in Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false))
                     {

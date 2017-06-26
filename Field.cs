@@ -145,10 +145,7 @@ namespace WindowsFormsApplication1
         {
             List<string> pref = new List<string>();
             List<string> pref1 = new List<string>();
-            if (p.len()<word.Length)
-            {
-                p.add(startX, startY);
-            }
+           
             
 
 
@@ -173,23 +170,17 @@ namespace WindowsFormsApplication1
                             {
                                 if (wordtree.GetWords(word + item).Count > 0)
                                 {
-                                    if (wordtree.HasWord(word + item))
-                                    {
-                                        pref.Add(word + item);
-                                    }
-                                    if (word + item == "со")
-                                    {
-                                        rev++;
-                                    }
-                                    string word24 = word + item;
+                                   
                                     
+                                    string word24 = word + item;
 
+                                    if (p.len() <= word.Length)
+                                    {
+                                        p.add(startX, startY);
+                                    }
                                     foreach (var x in Getnextstep(startX, startY))
                                     {
-                                        if (x.Item1 == 2 && x.Item2 == 2 && word+item=="со")
-                                        {
-                                            rev++;
-                                        }
+                                        
                                         addchar = true;
                                         
                                         pref1 = FindWord1(x.Item1, x.Item2, p, word + item, addchar);
@@ -210,18 +201,12 @@ namespace WindowsFormsApplication1
                     }
                     if (addchar)
                     {
-                        if (startX == 2 && startY == 2 && i == 2 && j == 3 && word=="со")
-                        {
-                            rev++;
-                        }
+                       
 
                         if (addchar && textboxmass[i, j] != String.Empty && textboxmass[startX, startY] == "" && !(i == startX && j == startY) && (p.Test(i, j) == false ) && smeg(startX, startY, i, j))
                         {
 
-                            if (word == "со")
-                            {
-                                rev++;
-                            }
+                            
                             word = word + textboxmass[i, j];
                            
                             if (wordtree.HasWord(word))
@@ -232,7 +217,10 @@ namespace WindowsFormsApplication1
 
 
 
-
+                            if (p.len() <= word.Length)
+                            {
+                                p.add(startX, startY);
+                            }
                             pref1 = FindWord1(i, j, p, word, addchar);
                             pref.AddRange(pref1);
                             return pref;
@@ -249,7 +237,10 @@ namespace WindowsFormsApplication1
                             {
                                 pref.Add(word);
                             }
-
+                            if (p.len() <= word.Length)
+                            {
+                                p.add(startX, startY);
+                            }
                             pref1 = FindWord1(i, j, p, word, addchar);
                             pref.AddRange(pref1);
 
@@ -272,18 +263,19 @@ namespace WindowsFormsApplication1
             List<string> pref1 = new List<string>();
 
 
+            
 
             update();
+
+            pref.AddRange(FindWord1(startX, startY, p, word, addchar));
             //ColorMass[startX, startY].BackColor = Color.Red;
             //words.Text = word;
             //puti.Text = p.ToString();
             //System.Threading.Thread.Sleep(sliper);
+
             
-            pref.AddRange(FindWord1(startX, startY, p, word, addchar));
-            if (p.len() < word.Length)
-            {
-                p.add(startX, startY);
-            }
+         
+            
 
             for (int i = 0; i < 5; i++)
             {
@@ -322,12 +314,12 @@ namespace WindowsFormsApplication1
                                 }
 
 
-  
 
 
-                                
+
+                                p.add(i, j);
                                 pref.AddRange(FindWord(i, j, p, word, addchar));
-                                        addchar = true;
+                     
                                 }
 
                         }
@@ -356,7 +348,6 @@ namespace WindowsFormsApplication1
 
 
             }
-        
 
 
             return pref;
