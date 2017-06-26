@@ -98,6 +98,7 @@ namespace WindowsFormsApplication1
             Pole.ReadMap();
             textboxreadonly.Clear();
             Pole.nexthelp();
+            Pole.setslovar(wordtree);
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
                 {
@@ -114,6 +115,7 @@ namespace WindowsFormsApplication1
                     paths p = new paths();
                     p.add(i, j);
                     help.AddRange(Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false));
+              
 
                 }
             Pole.setslovar(revwordtree);
@@ -127,7 +129,7 @@ namespace WindowsFormsApplication1
                     {
                         help.Add(Reverse(item));
                     }
-
+                    
                 }
 
 

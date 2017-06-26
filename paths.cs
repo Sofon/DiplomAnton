@@ -46,7 +46,7 @@ namespace WindowsFormsApplication1
             return un;
             }
 
-        public string ToString() {
+        public override string  ToString() {
             string s;
             s = "";
             for (int i = 0; i < x.Count; i++)

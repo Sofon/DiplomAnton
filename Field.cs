@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
         int MapHeight;
         int[,] WayMap;
         int rev;
-        int sliper =0;
+        int sliper = 0;
         Trie wordtree = new Trie();
         string alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
@@ -93,7 +93,7 @@ namespace WindowsFormsApplication1
 
 
 
-           
+
 
 
         }
@@ -104,8 +104,8 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
                 {
-                 
-                        ColorMass[i, j].ReadOnly = false;
+
+                    ColorMass[i, j].ReadOnly = false;
 
                 }
 
@@ -133,113 +133,160 @@ namespace WindowsFormsApplication1
 
             WayMap = new int[5, 5];
         }
-        
+
 
         public List<string> FindWord(int startX, int startY, paths p, string word, bool addchar)
         {
             List<string> pref = new List<string>();
             List<string> pref1 = new List<string>();
-            
 
 
 
-                //ColorMass[startX, startY].BackColor = Color.Red;
-                //words.Text = word;
-                //puti.Text = p.ToString();
-                //System.Threading.Thread.Sleep(sliper);
 
-                for (int i = 0; i < 5; i++)
+            //ColorMass[startX, startY].BackColor = Color.Red;
+            //words.Text = word;
+            //puti.Text = p.ToString();
+            //System.Threading.Thread.Sleep(sliper);
+
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
                 {
-                    for (int j = 0; j < 5; j++)
+
+
+                    if (!addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
                     {
-                        
-                        
-                        if (!addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
+                        //ColorMass[i, j].BackColor = Color.Yellow;
+                        //ColorMass[i, j].Invalidate();
+                        //ColorMass[i, j].Update();
+                        //words.Text = word;
+                        //words.Invalidate();
+                        //words.Update();
+                        //puti.Text = p.ToString();
+                        //puti.Invalidate();
+                        //puti.Update();
+                        // System.Threading.Thread.Sleep(sliper);
+                        if (Getstep(i, j) == 1)
                         {
-                            //ColorMass[i, j].BackColor = Color.Yellow;
-                            //ColorMass[i, j].Invalidate();
-                            //ColorMass[i, j].Update();
-                            //words.Text = word;
-                            //words.Invalidate();
-                            //words.Update();
-                            //puti.Text = p.ToString();
-                            //puti.Invalidate();
-                            //puti.Update();
-                           // System.Threading.Thread.Sleep(sliper);
-                            switch (Getstep(i, j))
+
+
+                            word = word + textboxmass[i, j];
+                            foreach (var item in alp)
                             {
-                                case 1:
-
-                                    {
-
-
-                                        word = word + textboxmass[i, j];
-                                        foreach (var item in alp)
-                                        {               
-                                            if (wordtree.HasWord(word + item))
-                                            {
-                                                pref.Add(word + item);
-                                            }
-                                           
-                                        }
-
-
-                                        p.add(i, j);
-                                        pref1 = FindWord(i, j, p, word,addchar);
-                                        pref.AddRange(pref1);
-                                      
-                                        return pref;
-                                    }
-
-                                    
-                            }
-                            if (!addchar && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j) && ColorMass[i, j].ReadOnly)
-                            {
-
-                                if (wordtree.GetWords(word + textboxmass[i, j]).Count > 0)
+                                if (wordtree.HasWord(word + item))
                                 {
-                                    word = word + textboxmass[i, j];
-                                    if (wordtree.HasWord(word))
-                                    {
-                                        pref.Add(word);
-                                    }
-                                         foreach (var item in alp)
-                                    {
-                                    if (wordtree.GetWords(word + item).Count > 0)
-                                    {
-                                        foreach (var x in Getnextstep(i, j))
-                                        {
-                                            p.add(x.Item1, x.Item2);
-                                            addchar = true;
-                                            pref1 = FindWord(i, j, p, word + item, addchar);
-                                            pref.AddRange(pref1);
-                                        }
-
-                                    }
+                                    pref.Add(word + item);
                                 }
-                                p.add(i, j);
-                                    pref1 = FindWord(i, j, p, word, addchar);
-                                pref.AddRange(pref1);
-                            }
 
                             }
+
+
+                            p.add(i, j);
+
+                            pref1 = FindWord(i, j, p, word, addchar);
+                            pref.AddRange(pref1);
+                            return pref;
+
                         }
+
+                        
+
+
+
+
+
+                        }
+                   
                     }
 
-                
-                //for (int i = 0; i < 5; i++)
-                //{
-                //    for (int j = 0; j < 5; j++)
-                //    {
-                //        ColorMass[i, j].BackColor = Color.White;
-                //    }
-                //}
+               
 
-                       
-            }
-            
+
+                        //for (int i = 0; i < 5; i++)
+                        //{
+                        //    for (int j = 0; j < 5; j++)
+                        //    {
+                        //        ColorMass[i, j].BackColor = Color.White;
+                        //    }
+                        //}
+
+
+                    }
+
+            //for (int i = 0; i < 5; i++)
+            //{
+            //    for (int j = 0; j < 5; j++)
+            //    {
+            //        if (!addchar && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j)  && textboxmass[i, j] == String.Empty && textboxmass[startX, startY] != String.Empty)
+            //        {
+
+            //            if (wordtree.GetWords(word).Count > 0)
+            //            {
+            //                if (wordtree.HasWord(word))
+            //                {
+            //                    pref.Add(word);
+            //                }
+            //                foreach (var item in alp)
+            //                {
+            //                    if (wordtree.GetWords(word + item).Count > 0)
+            //                    {
+            //                        foreach (var x in Getnextstep(i, j))
+            //                        {
+            //                            if (wordtree.HasWord(word+item))
+            //                            {
+            //                                pref.Add(word+item);
+            //                            }
+            //                            p.add(x.Item1, x.Item2);
+            //                            addchar = true;
+            //                            pref1 = FindWord(x.Item1, x.Item2, p, word + item, addchar);
+            //                            pref.AddRange(pref1);
+            //                        }
+
+            //                    }
+            //                }
+            //            }
+
+            //        }
+            //        if (addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
+            //        {
+            //            //ColorMass[i, j].BackColor = Color.Yellow;
+            //            //ColorMass[i, j].Invalidate();
+            //            //ColorMass[i, j].Update();
+            //            //words.Text = word;
+            //            //words.Invalidate();
+            //            //words.Update();
+            //            //puti.Text = p.ToString();
+            //            //puti.Invalidate();
+            //            //puti.Update();
+            //            // System.Threading.Thread.Sleep(sliper);
+            //            if (Getstep(i, j) == 1)
+            //            {
+
+
+            //                word = word + textboxmass[i, j];
+
+            //                if (wordtree.HasWord(word))
+            //                {
+            //                    pref.Add(word);
+            //                }
+
+
+
+
+            //                p.add(i, j);
+            //                pref1 = FindWord(i, j, p, word, addchar);
+            //                pref.AddRange(pref1);
+
+
+            //            }
+
+            //        }
+                    
+            //    }
+            //}
+
+
             return pref;
-
         }
 
 
@@ -268,7 +315,7 @@ namespace WindowsFormsApplication1
 
             int numstep;
             numstep = 0;
-            if ((!(!(x - 1 < 0) && !ColorMass[x - 1, y].ReadOnly) && !(!(y + 1 > 4) && !ColorMass[x, y + 1].ReadOnly) && !(!(x + 1 > 4) && !ColorMass[x + 1, y].ReadOnly) && !(!(y - 1 < 0) && !ColorMass[x, y - 1].ReadOnly)))
+            if (!(!(x - 1 < 0) && !ColorMass[x - 1, y].ReadOnly) && !(!(y + 1 > 4) && !ColorMass[x, y + 1].ReadOnly) && !(!(x + 1 > 4) && !ColorMass[x + 1, y].ReadOnly) && !(!(y - 1 < 0) && !ColorMass[x, y - 1].ReadOnly))
             {
 
                 numstep = 0;
