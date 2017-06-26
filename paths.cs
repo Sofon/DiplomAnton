@@ -56,5 +56,9 @@ namespace WindowsFormsApplication1
             }
             return s;
         }
+        public int len()
+        {
+            return x.Count;
+        }
     }
 }
