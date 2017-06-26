@@ -213,77 +213,68 @@ namespace WindowsFormsApplication1
 
                     }
 
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    for (int j = 0; j < 5; j++)
-            //    {
-            //        if (!addchar && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j)  && textboxmass[i, j] == String.Empty && textboxmass[startX, startY] != String.Empty)
-            //        {
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    if (!addchar && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j) && textboxmass[i, j] == String.Empty && textboxmass[startX, startY] != String.Empty)
+                    {
 
-            //            if (wordtree.GetWords(word).Count > 0)
-            //            {
-            //                if (wordtree.HasWord(word))
-            //                {
-            //                    pref.Add(word);
-            //                }
-            //                foreach (var item in alp)
-            //                {
-            //                    if (wordtree.GetWords(word + item).Count > 0)
-            //                    {
-            //                        foreach (var x in Getnextstep(i, j))
-            //                        {
-            //                            if (wordtree.HasWord(word+item))
-            //                            {
-            //                                pref.Add(word+item);
-            //                            }
-            //                            p.add(x.Item1, x.Item2);
-            //                            addchar = true;
-            //                            pref1 = FindWord(x.Item1, x.Item2, p, word + item, addchar);
-            //                            pref.AddRange(pref1);
-            //                        }
+                        if (wordtree.GetWords(word).Count > 0)
+                        {
+                            if (wordtree.HasWord(word))
+                            {
+                                pref.Add(word);
+                            }
+                            foreach (var item in alp)
+                            {
+                                if (wordtree.GetWords(word + item).Count > 0)
+                                {
+                                    foreach (var x in Getnextstep(i, j))
+                                    {
+                                        if (wordtree.HasWord(word + item))
+                                        {
+                                            pref.Add(word + item);
+                                        }
+                                        p.add(x.Item1, x.Item2);
+                                        addchar = true;
+                                        pref1 = FindWord(x.Item1, x.Item2, p, word + item, addchar);
+                                        pref.AddRange(pref1);
+                                    }
 
-            //                    }
-            //                }
-            //            }
+                                }
+                            }
+                        }
 
-            //        }
-            //        if (addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
-            //        {
-            //            //ColorMass[i, j].BackColor = Color.Yellow;
-            //            //ColorMass[i, j].Invalidate();
-            //            //ColorMass[i, j].Update();
-            //            //words.Text = word;
-            //            //words.Invalidate();
-            //            //words.Update();
-            //            //puti.Text = p.ToString();
-            //            //puti.Invalidate();
-            //            //puti.Update();
-            //            // System.Threading.Thread.Sleep(sliper);
-            //            if (Getstep(i, j) == 1)
-            //            {
+                    }
+                    if (addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
+                    {
+                 
+                        if (Getstep(i, j) == 1)
+                        {
 
 
-            //                word = word + textboxmass[i, j];
+                            word = word + textboxmass[i, j];
 
-            //                if (wordtree.HasWord(word))
-            //                {
-            //                    pref.Add(word);
-            //                }
+                            if (wordtree.HasWord(word))
+                            {
+                                pref.Add(word);
+                            }
 
 
 
 
-            //                p.add(i, j);
-            //                pref1 = FindWord(i, j, p, word, addchar);
-            //                pref.AddRange(pref1);
+                            p.add(i, j);
+                            pref1 = FindWord(i, j, p, word, addchar);
+                            pref.AddRange(pref1);
 
 
-            //            }
+                        }
 
-            //        }
-                    
-            //    }
-            //}
+                    }
+
+                }
+            }
 
 
             return pref;
