@@ -157,7 +157,7 @@ namespace WindowsFormsApplication1
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    if (!addchar && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j) && textboxmass[i, j] == "" && textboxmass[startX, startY] != String.Empty)
+                    if (!addchar && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j) && textboxmass[i, j] == "" && textboxmass[startX, startY] != String.Empty && Getstep(i,j)==1)
                     {
                         word = word + textboxmass[startX, startY];
                         if (wordtree.GetWords(word).Count > 0)
@@ -174,10 +174,10 @@ namespace WindowsFormsApplication1
                                     
                                     string word24 = word + item;
 
-                                    if (p.len() <= word.Length)
-                                    {
+                                 
                                         p.add(startX, startY);
-                                    }
+                                   
+       
                                     foreach (var x in Getnextstep(startX, startY))
                                     {
                                         
@@ -203,7 +203,7 @@ namespace WindowsFormsApplication1
                     {
                        
 
-                        if (addchar && textboxmass[i, j] != String.Empty && textboxmass[startX, startY] == "" && !(i == startX && j == startY) && (p.Test(i, j) == false ) && smeg(startX, startY, i, j))
+                        if (addchar && textboxmass[i, j] != String.Empty && textboxmass[startX, startY] == "" && !(i == startX && j == startY) && (p.Test(i, j) == false ) && smeg(startX, startY, i, j) && Getstep(i, j) == 1)
                         {
 
                             
@@ -217,17 +217,17 @@ namespace WindowsFormsApplication1
 
 
 
-                            if (p.len() <= word.Length)
-                            {
+                           
                                 p.add(startX, startY);
-                            }
+                            
+                          
                             pref1 = FindWord1(i, j, p, word, addchar);
                             pref.AddRange(pref1);
                             return pref;
 
 
                         }
-                        if (addchar && textboxmass[i, j] != String.Empty && textboxmass[startX, startY] != "" && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
+                        if (addchar && textboxmass[i, j] != String.Empty && textboxmass[startX, startY] != "" && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j) && Getstep(i, j) == 1)
                         {
 
 
@@ -237,10 +237,10 @@ namespace WindowsFormsApplication1
                             {
                                 pref.Add(word);
                             }
-                            if (p.len() <= word.Length)
-                            {
+                           
                                 p.add(startX, startY);
-                            }
+                           
+                          
                             pref1 = FindWord1(i, j, p, word, addchar);
                             pref.AddRange(pref1);
 
@@ -371,21 +371,7 @@ namespace WindowsFormsApplication1
 
 
         }
-        private bool smegp(int x, int y, int i, int j,paths p)
-        {
 
-            if ((y == j && x == i - 1) || (y == j - 1 && x == i) || (x == i + 1 && y == j) || (y == j + 1 && x == i) && !p.Test(i,j))
-            {
-                return true;
-            }
-
-
-            return false;
-
-
-
-
-        }
 
 
 
