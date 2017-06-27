@@ -114,7 +114,7 @@ namespace WindowsFormsApplication1
                 {
                     paths p = new paths();
 
-                    help.AddRange(Pole.FindWord3(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false));
+                    help.AddRange(Pole.FindWord3(i, j, p, "", false));
 
 
                 }
