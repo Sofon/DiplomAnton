@@ -109,35 +109,16 @@ namespace WindowsFormsApplication1
 
                 }
 
-            for (int i = 0; i < textboxreadonly.Count; i++)
-                for (int j = 0; j < textboxreadonly.Count; j++)
+            for (int i = 0; i < 5; i++)
+                for (int j = 0; j < 5; j++)
                 {
                     paths p = new paths();
-                    p.add(textboxreadonly[i].Item1, textboxreadonly[i].Item2);
-                    help.AddRange(Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, ColorMass[textboxreadonly[i].Item1, textboxreadonly[i].Item2].Text, false));
-                    p.lastdel();
-                    help.AddRange(Pole.FindWord1(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false));
 
-                }
-            Pole.setslovar(revwordtree);
-            for (int i = 0; i < textboxreadonly.Count; i++)
-               for (int j = 0; j < textboxreadonly.Count; j++)
-                {
-                    paths p = new paths();
-                    p.add(textboxreadonly[i].Item1, textboxreadonly[i].Item2);
-                    foreach (var item in Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false))
-                    {
-                        help.Add(Reverse(item));
-                    }
-                    p.lastdel();
-                    foreach (var item in Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false))
-                    {
-                        help.Add(Reverse(item));
-                    }
-                    
+                    help.AddRange(Pole.FindWord3(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false));
 
 
                 }
+   
 
 
             helpdub1 = help.Distinct().OrderByDescending(x => x.Length).ToList<string>();

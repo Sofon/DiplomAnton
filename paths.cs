@@ -34,13 +34,13 @@ namespace WindowsFormsApplication1
         public bool Test(int xx, int yy)
             {
           
-                bool un = false;
+                bool un = true;
 
             for (int i = 0; i < x.Count; i++)
             {
                 if (x[i]==xx && y[i]==yy)
                 {
-                    un = true;
+                    un = false;
                 }
             }
             return un;

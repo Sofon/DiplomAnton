@@ -257,6 +257,113 @@ namespace WindowsFormsApplication1
         }
 
 
+        char itn = '*';
+        public List<string> FindWord3(int startX, int startY, paths p, string word, bool addchar)
+        {
+            List<string> pref = new List<string>();
+            List<string> pref1 = new List<string>();
+
+            p.add(startX, startY);
+            update();
+
+
+            foreach (var item in Getnextstepfree(startX,startY))
+            {
+                if (addchar && textboxmass[item.Item1, item.Item2] != "" && p.Test(item.Item1, item.Item2)&& smeg(startX,startY, item.Item1, item.Item2))
+                {
+                    
+                    word = word + textboxmass[item.Item1, item.Item2];
+                    foreach (var a in alp)
+                    {
+                        if (wordtree.HasWord(word.Replace(itn, a)))
+                        {
+                            pref.Add(word.Replace(itn, a));
+                        }
+
+                    }
+                    if (p.len() < 25)
+                    {
+                        if (item.Item1 == 2 && item.Item2 == 0)
+                        {
+                            rev++;
+                        }
+                        pref.AddRange(FindWord3(item.Item1, item.Item2, p, word, addchar));
+                    }
+
+
+                }
+                if (!addchar && p.Test(item.Item1, item.Item2) && smeg(startX, startY, item.Item1, item.Item2))
+                {
+
+                   
+                    if (textboxmass[item.Item1, item.Item2] != "")
+                    {
+                        word = word + textboxmass[item.Item1, item.Item2];
+                        if (item.Item1==2 && item.Item2==0)
+                        {
+                            rev++;
+                        }
+                        pref.AddRange(FindWord3(item.Item1, item.Item2, p, word, addchar));
+                    }
+                    else
+                    {
+                     
+                        word = word + itn;
+                        addchar = true;
+                        foreach (var a in alp)
+                        {
+                            if (wordtree.HasWord(word.Replace(itn, a)))
+                            {
+                                pref.Add(word.Replace(itn, a));
+                            }
+
+                        }
+                        if (item.Item1 == 2 && item.Item2 == 0)
+                        {
+                            rev++;
+                        }
+                        pref.AddRange(FindWord3(item.Item1, item.Item2, p, word, addchar));
+                        
+                    }
+                   
+                   
+
+                }
+            }
+
+            return pref;   
+
+        }
+
+        private List<Tuple<int, int>> Getnextstepfree(int x, int y)
+        {
+            List<Tuple<int, int>> core = new List<Tuple<int, int>>();
+
+
+            if (x - 1 >= 0)
+            {
+                core.Add(new Tuple<int, int>(x - 1, y));
+            }
+
+            if (y + 1 <= 4)
+            {
+                core.Add(new Tuple<int, int>(x, y + 1));
+            }
+
+            if (x + 1 <= 4)
+            {
+                core.Add(new Tuple<int, int>(x + 1, y));
+            }
+
+            if (y - 1 >= 0)
+            {
+                core.Add(new Tuple<int, int>(x, y - 1));
+            }
+
+
+            return core;
+        }
+
         public List<string> FindWord(int startX, int startY, paths p, string word, bool addchar)
         {
             List<string> pref = new List<string>();
@@ -266,7 +373,7 @@ namespace WindowsFormsApplication1
 
             update();
 
-            pref.AddRange(FindWord1(startX, startY, p, word, addchar));
+            //pref.AddRange(FindWord1(startX, startY, p, word, addchar));
             //ColorMass[startX, startY].BackColor = Color.Red;
             //words.Text = word;
             //puti.Text = p.ToString();
@@ -281,31 +388,14 @@ namespace WindowsFormsApplication1
                 for (int j = 0; j < 5; j++)
                 {
 
-                    if (word == "ла" && i == 2 && j == 3)
-                    {
-                        rev++;
-                    }
                     if (!addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j)&& p.len()==word.Length)
                     {
-                        //ColorMass[i, j].BackColor = Color.Yellow;
-                        //ColorMass[i, j].Invalidate();
-                        //ColorMass[i, j].Update();
-                        //words.Text = word;
-                        //words.Invalidate();
-                        //words.Update();
-                        //puti.Text = p.ToString();
-                        //puti.Invalidate();
-                        //puti.Update();
-                        // System.Threading.Thread.Sleep(sliper);
+                       
                         if (Getstep(i, j) == 1)
                         {
 
 
-                            word =word + textboxmass[i, j];
-                            if (word=="ла")
-                            {
-                                rev++;
-                            }
+                          
 
 
                                 foreach (var item in alp)
@@ -325,13 +415,6 @@ namespace WindowsFormsApplication1
                      
                                 }
                    
-                        
-                
-
-
-
-
-
 
                     }
 
@@ -508,5 +591,52 @@ namespace WindowsFormsApplication1
             }
             return core;
         }
+        private List<Tuple<int, int>> Getnextstepadd(int x, int y)
+        {
+            List<Tuple<int, int>> core = new List<Tuple<int, int>>();
+            if ((((x - 1 >= 0) && (textboxmass[x - 1, y] != ""))) && ((y + 1 <= 4) && (textboxmass[x, y + 1] != "")) && ((x + 1 <= 4) && (textboxmass[x + 1, y] != "")) && ((y - 1 >= 0) && (textboxmass[x, y - 1] != "")))
+            {
+
+
+            }
+            else
+            {
+                if ((x - 1 >= 0 && (textboxmass[x - 1, y] != "") == true))
+                {
+                    core.Add(new Tuple<int, int>(x - 1, y));
+                }
+
+                if ((y + 1 <= 4 && (textboxmass[x, y + 1] != "") == true))
+                {
+                    core.Add(new Tuple<int, int>(x, y + 1));
+                }
+
+                if ((x + 1 <= 4 && (textboxmass[x + 1, y] != "") == true))
+                {
+                    core.Add(new Tuple<int, int>(x + 1, y));
+                }
+
+
+
+
+                if ((y - 1 >= 0 && (textboxmass[x, y - 1] != "") == true))
+                {
+                    core.Add(new Tuple<int, int>(x, y - 1));
+                }
+
+
+
+
+
+
+
+            }
+            return core;
+        }
+
     }
+
+
 }
+
+
