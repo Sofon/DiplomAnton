@@ -145,7 +145,7 @@ namespace WindowsFormsApplication1
         {
             List<string> pref = new List<string>();
             List<string> pref1 = new List<string>();
-           
+            p.add(startX, startY);
             
 
 
@@ -175,7 +175,7 @@ namespace WindowsFormsApplication1
                                     string word24 = word + item;
 
                                  
-                                        p.add(startX, startY);
+                                   
                                    
        
                                     foreach (var x in Getnextstep(startX, startY))
@@ -185,6 +185,7 @@ namespace WindowsFormsApplication1
                                         
                                         pref1 = FindWord1(x.Item1, x.Item2, p, word + item, addchar);
                                         pref.AddRange(pref1);
+                                        return pref;
                                     }
 
 
@@ -201,51 +202,39 @@ namespace WindowsFormsApplication1
                     }
                     if (addchar)
                     {
-                       
-
-                        if (addchar && textboxmass[i, j] != String.Empty && textboxmass[startX, startY] == "" && !(i == startX && j == startY) && (p.Test(i, j) == false ) && smeg(startX, startY, i, j) && Getstep(i, j) == 1)
+                        if (word == "со" && startX==2  && startY == 1)
                         {
-
-                            
-                            word = word + textboxmass[i, j];
-                           
-                            if (wordtree.HasWord(word))
-                            {
-                                pref.Add(word);
-                            }
-
-
-
-
-                           
-                                p.add(startX, startY);
-                            
-                          
-                            pref1 = FindWord1(i, j, p, word, addchar);
-                            pref.AddRange(pref1);
-                            return pref;
-
-
+                            rev++;
                         }
-                        if (addchar && textboxmass[i, j] != String.Empty && textboxmass[startX, startY] != "" && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j) && Getstep(i, j) == 1)
+
+                        if (addchar && textboxmass[i, j] != "" && textboxmass[startX, startY] == "" && !(i == startX && j == startY) && (p.Test(i, j) == false ) && smeg(startX, startY, i, j))
                         {
 
-
-                            word = word + textboxmass[i, j];
-
-                            if (wordtree.HasWord(word))
+                            if (addchar && textboxmass[i, j] != String.Empty && textboxmass[startX, startY] == "" && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
                             {
-                                pref.Add(word);
+
+
+                                word = word + textboxmass[i, j];
+
+                               
+                                pref1 = FindWord1(i, j, p, word, addchar);
+                                pref.AddRange(pref1);
+
+
+
                             }
-                           
-                                p.add(startX, startY);
-                           
-                          
-                            pref1 = FindWord1(i, j, p, word, addchar);
-                            pref.AddRange(pref1);
+                            if (addchar && textboxmass[i, j] != String.Empty && textboxmass[startX, startY] != "" && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
+                            {
+
+
+                                word = word + textboxmass[i, j];
+
+                                pref1 = FindWord1(i, j, p, word, addchar);
+                                pref.AddRange(pref1);
 
 
 
+                            }
                         }
                     }
 
@@ -263,11 +252,11 @@ namespace WindowsFormsApplication1
             List<string> pref1 = new List<string>();
 
 
-            
 
+            
             update();
 
-            pref.AddRange(FindWord1(startX, startY, p, word, addchar));
+            
             //ColorMass[startX, startY].BackColor = Color.Red;
             //words.Text = word;
             //puti.Text = p.ToString();
@@ -282,8 +271,11 @@ namespace WindowsFormsApplication1
                 for (int j = 0; j < 5; j++)
                 {
 
-
-                    if (!addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j))
+                    if (word == "ла" && i == 2 && j == 3)
+                    {
+                        rev++;
+                    }
+                    if (!addchar && textboxmass[i, j] != String.Empty && !(i == startX && j == startY) && (p.Test(i, j) == false) && smeg(startX, startY, i, j)&& p.len()==word.Length)
                     {
                         //ColorMass[i, j].BackColor = Color.Yellow;
                         //ColorMass[i, j].Invalidate();
@@ -299,9 +291,11 @@ namespace WindowsFormsApplication1
                         {
 
 
-                            word = word + textboxmass[i, j];
-                            if (wordtree.GetWords(word).Count > 0)
+                            word =word + textboxmass[i, j];
+                            if (word=="ла")
                             {
+                                rev++;
+                            }
 
 
                                 foreach (var item in alp)
@@ -316,14 +310,13 @@ namespace WindowsFormsApplication1
 
 
 
-
-                                p.add(i, j);
-                                pref.AddRange(FindWord(i, j, p, word, addchar));
+                            p.add(i, j);
+                            pref.AddRange(FindWord(i, j, p, word, addchar));
                      
                                 }
-
-                        }
-
+                   
+                        
+                
 
 
 
@@ -337,18 +330,10 @@ namespace WindowsFormsApplication1
 
 
 
-                //for (int i = 0; i < 5; i++)
-                //{
-                //    for (int j = 0; j < 5; j++)
-                //    {
-                //        ColorMass[i, j].BackColor = Color.White;
-                //    }
-                //}
-
 
 
             }
-
+            
 
             return pref;
         }

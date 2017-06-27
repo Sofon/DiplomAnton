@@ -113,21 +113,25 @@ namespace WindowsFormsApplication1
                 for (int j = 0; j < textboxreadonly.Count; j++)
                 {
                     paths p = new paths();
-                    help.AddRange(Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false));
-              
+                    p.add(textboxreadonly[i].Item1, textboxreadonly[i].Item2);
+                    help.AddRange(Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, ColorMass[textboxreadonly[i].Item1, textboxreadonly[i].Item2].Text, false));
+                    p.lastdel();
+                    help.AddRange(Pole.FindWord1(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, ColorMass[textboxreadonly[i].Item1, textboxreadonly[i].Item2].Text, false));
 
                 }
             Pole.setslovar(revwordtree);
             for (int i = 0; i < textboxreadonly.Count; i++)
-                for (int j = 0; j < textboxreadonly.Count; j++)
+               for (int j = 0; j < textboxreadonly.Count; j++)
                 {
                     paths p = new paths();
-
+                    p.add(textboxreadonly[i].Item1, textboxreadonly[i].Item2);
                     foreach (var item in Pole.FindWord(textboxreadonly[i].Item1, textboxreadonly[i].Item2, p, "", false))
                     {
                         help.Add(Reverse(item));
                     }
-                    
+                    p.lastdel();
+
+
                 }
 
 
