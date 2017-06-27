@@ -19,3 +19,5 @@ C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Release\WindowsFormsApplicat
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.exe
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.pdb
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Release\Microsoft.VisualStudio.DebuggerVisualizers.dll
+C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Release\ru\Microsoft.VisualStudio.DebuggerVisualizers.resources.dll

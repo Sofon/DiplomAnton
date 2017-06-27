@@ -116,6 +116,7 @@ namespace WindowsFormsApplication1
 
                     help.AddRange(Pole.FindWord3(i, j, p, "", false));
 
+                
 
                 }
    

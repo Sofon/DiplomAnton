@@ -13,11 +13,10 @@ namespace WindowsFormsApplication1
     {
 
         int[,] Map;
-        int MapWidht;
-        int MapHeight;
+
         int[,] WayMap;
         int rev;
-        int sliper = 0;
+
         Trie wordtree = new Trie();
         string alp = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
@@ -121,8 +120,6 @@ namespace WindowsFormsApplication1
         public void ReadMap()
         {
             rev = 0;
-            MapWidht = 5;
-            MapHeight = 5;
             Map = new int[5, 5];
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
