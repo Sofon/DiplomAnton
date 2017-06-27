@@ -259,14 +259,18 @@ namespace WindowsFormsApplication1
         {
             List<string> pref = new List<string>();
             List<string> pref1 = new List<string>();
-
+            if (startX==1 && startY ==0 )
+            {
+                rev++;
+            }
             p.add(startX, startY);
             update();
 
+           
 
             foreach (var item in Getnextstepfree(startX,startY))
             {
-                if (addchar && textboxmass[item.Item1, item.Item2] != "" && p.Test(item.Item1, item.Item2)&& smeg(startX,startY, item.Item1, item.Item2))
+                if (addchar && textboxmass[item.Item1, item.Item2].Trim() != String.Empty && p.Test(item.Item1, item.Item2)&& smeg(startX,startY, item.Item1, item.Item2))
                 {
                     
                     word = word + textboxmass[item.Item1, item.Item2];
@@ -285,6 +289,7 @@ namespace WindowsFormsApplication1
                             rev++;
                         }
                         pref.AddRange(FindWord3(item.Item1, item.Item2, p, word, addchar));
+                        return pref;
                     }
 
 
@@ -301,10 +306,10 @@ namespace WindowsFormsApplication1
                             rev++;
                         }
                         pref.AddRange(FindWord3(item.Item1, item.Item2, p, word, addchar));
+                        return pref;
                     }
                     else
                     {
-                     
                         word = word + itn;
                         addchar = true;
                         foreach (var a in alp)
@@ -320,7 +325,7 @@ namespace WindowsFormsApplication1
                             rev++;
                         }
                         pref.AddRange(FindWord3(item.Item1, item.Item2, p, word, addchar));
-                        
+                        return pref;
                     }
                    
                    
