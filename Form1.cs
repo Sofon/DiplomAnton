@@ -12,6 +12,7 @@ using WindowsFormsApplication1;
 using rm.Trie;
 using System.Timers;
 using System.Diagnostics;
+using System.Threading;
 
 namespace WindowsFormsApplication1
 {
@@ -23,6 +24,7 @@ namespace WindowsFormsApplication1
 
         
         Field Pole = new Field();
+        List<string> helpdub1 = new List<string>();
         Trie wordtree = new Trie();
         Trie revwordtree = new Trie();
         List<string> slova = new List<string>();
@@ -92,13 +94,27 @@ namespace WindowsFormsApplication1
             sw.Start();
             textBox28.Clear();
             Pole.update();
-            List<string> helpdub = new List<string>();
-            List<string> helpdub1 = new List<string>();
-            List<string> helpdub2 = new List<string>();
-            Pole.ReadMap();
-            textboxreadonly.Clear();
-            Pole.nexthelp();
-            Pole.setslovar(wordtree);
+           
+            Thread myThread = new Thread(test,1000000000);
+           
+            myThread.Start();
+            
+            myThread.Join();
+
+
+             List<string> f = new List<string>(helpdub1.Distinct().Except(slova));
+            int lineC = f.Count;
+            for (int line = 0; line < lineC; line++)
+            {
+
+                textBox28.Text = textBox28.Text + f.ElementAt(line) + "\r\n";  //вернуть на f как было.
+            }
+
+
+        }
+        public void test()
+        {
+            
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
                 {
@@ -111,45 +127,25 @@ namespace WindowsFormsApplication1
 
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
-                { 
+                {
                     paths p = new paths();
 
-            help.AddRange(Pole.FindWord3(i, j, p, ColorMass[i, j].Text, false));
+                    help.AddRange(Pole.FindWord3(i, j, p, ColorMass[i, j].Text, false));
 
-        }
-          
-                
 
+                }
 
             helpdub1 = help.Distinct().OrderByDescending(x => x.Length).ToList<string>();
-            //foreach (var item in helpdub1)
-            //{
+         
 
-            //    foreach (var word in wordtree.GetWords(item))
-            //    {
-            //        if (word.Length==item.Length+1)
-            //        {
-            //            helpdub2.Add(word);
-            //        }
-            //    }
-            // }
+           
 
+         
+ 
 
-            List<string> f = new List<string>(helpdub1.Distinct().Except(slova));
-            int lineC = f.Count;
-            for (int line = 0; line < lineC; line++)
-            {
-
-                textBox28.Text = textBox28.Text + f.ElementAt(line) + "\r\n";  //вернуть на f как было.
-            }
-
-            help.Clear();
-            Pole.Afterhelp();
-            sw.Stop();
-            label9.Text = (sw.ElapsedMilliseconds / 100.0).ToString();
         }
 
-        public static string Reverse(string s)
+            public static string Reverse(string s)
         {
             char[] charArray = s.ToCharArray();
             Array.Reverse(charArray);
