@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\community\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="15.0">
+ <Targets>
+  <Target Name="C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe">
+   <Modules>
+    <Module Name="windowsformsapplication1.exe">
+     <Namespaces>
+      <Namespace Name="rm.Trie">
+       <Types>
+        <Type Name="Trie" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetTrieNodesStack(System.String,System.Boolean)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Trie.cs" Line="317">В связи с тем, что поведение 'string.Format(string, object)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'Trie.GetTrieNodesStack(string, bool)' вызовом 'string.Format(IFormatProvider, string, params object[])'. Если результат 'string.Format(IFormatProvider, string, params object[])' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IformatProvider". В ином случае, если результат будет храниться и использоваться программой, например при сохранении на диск или в базу данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="WindowsFormsApplication1">
+       <Types>
+        <Type Name="Field" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#check" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_check()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="NonBreaking">
+               <Issue Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Field.cs" Line="548">Измените 'Field.check.get()', чтобы вызвать перегрузку MessageBox.Show, указывающую MessageBoxOptions, и убедитесь, что установлены значения MessageBoxOptions.RightAlign и MessageBoxOptions.RtlReading, если в родительском элементе управления для RightToLeft задано значение RightToLeft.Yes.</Issue>
+              </Message>
+              <Message Id="System.Windows.Forms.MessageBox.Show(System.String)" TypeName="Не передавать литералы в качестве локализованных параметров" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="DependsOnFix">
+               <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Field.cs" Line="548">Метод 'Field.check.get()' передает строку-литерал, как параметр "text" при вызове 'MessageBox.Show(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Вы не ввели ни одной буквы, для пропуска хода воспользуйтесь соответствующей кно...".</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Form1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#.ctor()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="System.Int32.Parse(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="229">В связи с тем, что поведение 'int.Parse(string)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'Form1.Form1()' вызовом 'int.Parse(string, IFormatProvider)'..Если результат 'int.Parse(string, IFormatProvider)' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IFormatProvider". В ином случае, если результат будет основываться на хранимых входных данных и использоваться программой, например при загрузке с диска или из базы данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="230">В связи с тем, что поведение 'int.Parse(string)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'Form1.Form1()' вызовом 'int.Parse(string, IFormatProvider)'..Если результат 'int.Parse(string, IFormatProvider)' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IFormatProvider". В ином случае, если результат будет основываться на хранимых входных данных и использоваться программой, например при загрузке с диска или из базы данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Не передавать литералы в качестве локализованных параметров" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="271">Метод 'Form1.Form1()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "а".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="274">Метод 'Form1.Form1()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "а".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="270">Метод 'Form1.Form1()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "б".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="273">Метод 'Form1.Form1()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "д".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="276">Метод 'Form1.Form1()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "и".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="272">Метод 'Form1.Form1()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "л".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="269">Метод 'Form1.Form1()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "о".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="275">Метод 'Form1.Form1()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "ф".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#button1_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Не передавать литералы в качестве локализованных параметров" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="305">Метод 'Form1.button1_Click(object, EventArgs)' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "0".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="306">Метод 'Form1.button1_Click(object, EventArgs)' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "0".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#button2_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="457">Измените 'Form1.button2_Click(object, EventArgs)', чтобы вызвать перегрузку MessageBox.Show, указывающую MessageBoxOptions, и убедитесь, что установлены значения MessageBoxOptions.RightAlign и MessageBoxOptions.RtlReading, если в родительском элементе управления для RightToLeft задано значение RightToLeft.Yes.</Issue>
+            </Message>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Не передавать литералы в качестве локализованных параметров" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="424">Метод 'Form1.button2_Click(object, EventArgs)' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: " , \r\n".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="439">Метод 'Form1.button2_Click(object, EventArgs)' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: " , \r\n".</Issue>
+            </Message>
+            <Message Id="System.Windows.Forms.MessageBox.Show(System.String)" TypeName="Не передавать литералы в качестве локализованных параметров" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="457">Метод 'Form1.button2_Click(object, EventArgs)' передает строку-литерал, как параметр "text" при вызове 'MessageBox.Show(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Такого слова нет ".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#button4_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Convert.ToInt32(System.String)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="49">В связи с тем, что поведение 'Convert.ToInt32(string)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'Form1.button4_Click(object, EventArgs)' вызовом 'Convert.ToInt32(string, IFormatProvider)'..Если результат 'Convert.ToInt32(string, IFormatProvider)' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IFormatProvider". В ином случае, если результат будет основываться на хранимых входных данных и использоваться программой, например при загрузке с диска или из базы данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="49">В связи с тем, что поведение 'Convert.ToInt32(string)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'Form1.button4_Click(object, EventArgs)' вызовом 'Convert.ToInt32(string, IFormatProvider)'..Если результат 'Convert.ToInt32(string, IFormatProvider)' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IFormatProvider". В ином случае, если результат будет основываться на хранимых входных данных и использоваться программой, например при загрузке с диска или из базы данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="53">В связи с тем, что поведение 'Convert.ToInt32(string)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'Form1.button4_Click(object, EventArgs)' вызовом 'Convert.ToInt32(string, IFormatProvider)'..Если результат 'Convert.ToInt32(string, IFormatProvider)' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IFormatProvider". В ином случае, если результат будет основываться на хранимых входных данных и использоваться программой, например при загрузке с диска или из базы данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="53">В связи с тем, что поведение 'Convert.ToInt32(string)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'Form1.button4_Click(object, EventArgs)' вызовом 'Convert.ToInt32(string, IFormatProvider)'..Если результат 'Convert.ToInt32(string, IFormatProvider)' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IFormatProvider". В ином случае, если результат будет основываться на хранимых входных данных и использоваться программой, например при загрузке с диска или из базы данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="57">В связи с тем, что поведение 'Convert.ToInt32(string)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'Form1.button4_Click(object, EventArgs)' вызовом 'Convert.ToInt32(string, IFormatProvider)'..Если результат 'Convert.ToInt32(string, IFormatProvider)' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IFormatProvider". В ином случае, если результат будет основываться на хранимых входных данных и использоваться программой, например при загрузке с диска или из базы данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Name="IFormatProviderAlternate" Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="57">В связи с тем, что поведение 'Convert.ToInt32(string)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'Form1.button4_Click(object, EventArgs)' вызовом 'Convert.ToInt32(string, IFormatProvider)'..Если результат 'Convert.ToInt32(string, IFormatProvider)' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IFormatProvider". В ином случае, если результат будет основываться на хранимых входных данных и использоваться программой, например при загрузке с диска или из базы данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+            <Message TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="51">Измените 'Form1.button4_Click(object, EventArgs)', чтобы вызвать перегрузку MessageBox.Show, указывающую MessageBoxOptions, и убедитесь, что установлены значения MessageBoxOptions.RightAlign и MessageBoxOptions.RtlReading, если в родительском элементе управления для RightToLeft задано значение RightToLeft.Yes.</Issue>
+             <Issue Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="55">Измените 'Form1.button4_Click(object, EventArgs)', чтобы вызвать перегрузку MessageBox.Show, указывающую MessageBoxOptions, и убедитесь, что установлены значения MessageBoxOptions.RightAlign и MessageBoxOptions.RtlReading, если в родительском элементе управления для RightToLeft задано значение RightToLeft.Yes.</Issue>
+             <Issue Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="59">Измените 'Form1.button4_Click(object, EventArgs)', чтобы вызвать перегрузку MessageBox.Show, указывающую MessageBoxOptions, и убедитесь, что установлены значения MessageBoxOptions.RightAlign и MessageBoxOptions.RtlReading, если в родительском элементе управления для RightToLeft задано значение RightToLeft.Yes.</Issue>
+            </Message>
+            <Message Id="System.Windows.Forms.MessageBox.Show(System.String)" TypeName="Не передавать литералы в качестве локализованных параметров" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="51">Метод 'Form1.button4_Click(object, EventArgs)' передает строку-литерал, как параметр "text" при вызове 'MessageBox.Show(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Второй игрок победил".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="59">Метод 'Form1.button4_Click(object, EventArgs)' передает строку-литерал, как параметр "text" при вызове 'MessageBox.Show(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Ничья".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="55">Метод 'Form1.button4_Click(object, EventArgs)' передает строку-литерал, как параметр "text" при вызове 'MessageBox.Show(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Первый игрок победил".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#button5_Click(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Double.ToString" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="150">В связи с тем, что поведение 'double.ToString()' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'Form1.button5_Click(object, EventArgs)' вызовом 'double.ToString(IFormatProvider)'. Если результат 'double.ToString(IFormatProvider)' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IformatProvider". В ином случае, если результат будет храниться и использоваться программой, например при сохранении на диск или в базу данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Не передавать литералы в качестве локализованных параметров" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="106">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "0".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="118">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "1".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="227">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "10".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="239">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "11".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="251">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "12".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="263">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "13".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="275">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "14".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="287">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "15".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="299">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "16".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="311">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "17".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="323">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "18".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="335">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "19".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="130">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "2".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="347">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "20".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="359">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "21".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="371">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "22".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="383">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "23".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="395">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "24".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="142">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "3".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="154">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "4".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="166">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "5".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="178">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "6".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="190">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "7".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="202">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "8".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="214">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "9".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="537">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "label8".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="546">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "label9".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="597">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Балда".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="492">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Завершить игру".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="431">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Игрок1".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="440">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Игрок2".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="84">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Новая игра".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="422">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Помощник".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="511">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Помощь".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="482">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Пропустить ход".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="94">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Следущий ход".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="522">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Таймер".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.Designer.cs" Line="449">Метод 'Form1.InitializeComponent()' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Текущее слово:".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#timer1_Tick(System.Object,System.EventArgs)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Не передавать литералы в качестве локализованных параметров" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2017-06-28 17:31:29Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\Users\Sofon\Desktop\WindowsFormsApplication1" File="Form1.cs" Line="176">Метод 'Form1.timer1_Tick(object, EventArgs)' передает строку-литерал, как параметр "value" при вызове 'Control.Text.set(string)'. Вместо этого выполните поиск следующей строки (строк) в таблице источника: "Осталось времени: ".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+   <Name>Указывайте IFormatProvider</Name>
+   <Description>Если существует перегрузка, которая принимает аргумент IFormatProvider, следует всегда вызывать ее, а не другую перегрузку, не принимающую этот аргумент. Некоторые методы во время выполнения преобразовывают значение в представление строки или из него. Они принимают строковый параметр, который содержит один или несколько знаков, которые называются спецификаторами формата и указывают, как следует преобразовывать значение. Если смысл спецификатора формата зависит от языка и региональных настроек, форматируемый объект предоставляет действительные символы, которые используются в представлении строки. В сценариях, в которых поведение при сортировке и сравнении не зависит от языка и региональных настроек, следует указать CultureInfo.InvariantCulture, в ином случае следует указывать CultureInfo.CurrentCulture.</Description>
+   <Resolution Name="IFormatProviderAlternate">В связи с тем, что поведение {0} может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в {1} вызовом {2}..Если результат {2} базируется на пользовательском вводе, укажите {3} в качестве параметра "IFormatProvider". В ином случае, если результат будет основываться на хранимых входных данных и использоваться программой, например при загрузке с диска или из базы данных, следует указать {4}.</Resolution>
+   <Resolution Name="IFormatProviderAlternateString">В связи с тем, что поведение {0} может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в {1} вызовом {2}. Если результат {2} базируется на пользовательском вводе, укажите {3} в качестве параметра "IformatProvider". В ином случае, если результат будет храниться и использоваться программой, например при сохранении на диск или в базу данных, следует указать {4}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182190.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="globalizationrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyMessageBoxOptions" Category="Microsoft.Globalization" CheckId="CA1300">
+   <Name>Укажите MessageBoxOptions</Name>
+   <Description>Для корректной работы в системах с расположением текста справа налево все вызовы MessageBox.Show должны осуществлять перегрузку, указывающую в качестве аргумента MessageBoxOptions. Для правильного отображения программы должны во время выполнения определить, запущены ли они в системе с расположением текста справа налево, и передать соответствующее значение MessageBoxOptions.</Description>
+   <Resolution Name="Default">Измените {0}, чтобы вызвать перегрузку MessageBox.Show, указывающую MessageBoxOptions, и убедитесь, что установлены значения MessageBoxOptions.RightAlign и MessageBoxOptions.RtlReading, если в родительском элементе управления для RightToLeft задано значение RightToLeft.Yes.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182191.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="globalizationrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="Не передавать литералы в качестве локализованных параметров" Category="Microsoft.Globalization" CheckId="CA1303">
+   <Name>Не передавать литералы в качестве локализованных параметров</Name>
+   <Description>Строки литералов, внедренные в исходный код, сложно локализировать. Избегайте передачи строк типа литерал в качестве аргументов в случаях, когда ожидается локализованная строка.</Description>
+   <Resolution Name="KnownValue">Метод {0} передает строку-литерал, как параметр "{1}" при вызове {2}. Вместо этого выполните поиск следующей строки (строк) в таблице источника: {3}.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182187.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Категория</String>
+  <String Key="Certainty">Достоверность</String>
+  <String Key="CollapseAll">Свернуть все</String>
+  <String Key="CheckId">ИД проверки</String>
+  <String Key="Error">Ошибка</String>
+  <String Key="Errors">ошибки</String>
+  <String Key="ExpandAll">Развернуть все</String>
+  <String Key="Help">Справка</String>
+  <String Key="Line">Строка</String>
+  <String Key="Messages">сообщения</String>
+  <String Key="LocationNotStoredInPdb">[расположение не сохранено в PDB]</String>
+  <String Key="Project">Проект</String>
+  <String Key="Resolution">Разрешение</String>
+  <String Key="Rule">Правило</String>
+  <String Key="RuleFile">Файл правил</String>
+  <String Key="RuleDescription">Описание правила</String>
+  <String Key="Source">Источник</String>
+  <String Key="Status">Состояние</String>
+  <String Key="Target">Цель</String>
+  <String Key="Warning">Предупреждение</String>
+  <String Key="Warnings">предупреждения</String>
+  <String Key="ReportTitle">Отчет по анализу кода</String>
+ </Localized>
+</FxCopReport>

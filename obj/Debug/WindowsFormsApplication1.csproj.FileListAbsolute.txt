@@ -34,7 +34,10 @@ C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\WindowsFormsApplicatio
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.application
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
-C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.CodeAnalysisLog.xml
+C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.lastcodeanalysissucceeded
+C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\Microsoft.VisualStudio.DebuggerVisualizers.dll
+C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\ru\Microsoft.VisualStudio.DebuggerVisualizers.resources.dll
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
@@ -42,5 +45,3 @@ C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Debug\WindowsFormsApplicatio
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.application
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\Sofon\Desktop\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
-C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\Microsoft.VisualStudio.DebuggerVisualizers.dll
-C:\Users\Sofon\Desktop\WindowsFormsApplication1\bin\Debug\ru\Microsoft.VisualStudio.DebuggerVisualizers.resources.dll

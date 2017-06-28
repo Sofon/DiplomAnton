@@ -21,7 +21,7 @@ namespace WindowsFormsApplication1
     public partial class Form1 : Form
     {
 
-
+        
         Field Pole = new Field();
         Trie wordtree = new Trie();
         Trie revwordtree = new Trie();
@@ -91,7 +91,7 @@ namespace WindowsFormsApplication1
             System.Diagnostics.Stopwatch sw = new Stopwatch();
             sw.Start();
             textBox28.Clear();
-
+            Pole.update();
             List<string> helpdub = new List<string>();
             List<string> helpdub1 = new List<string>();
             List<string> helpdub2 = new List<string>();
@@ -102,7 +102,7 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
                 {
-                    if (ColorMass[i, j].Text!="")
+                    if (ColorMass[i, j].Text != "")
                     {
                         textboxreadonly.Add(new Tuple<int, int>(i, j));
                     }
@@ -111,15 +111,14 @@ namespace WindowsFormsApplication1
 
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
-                {
+                { 
                     paths p = new paths();
 
-                    help.AddRange(Pole.FindWord3(i, j, p, "", false));
+            help.AddRange(Pole.FindWord3(i, j, p, ColorMass[i, j].Text, false));
 
+        }
+          
                 
-
-                }
-   
 
 
             helpdub1 = help.Distinct().OrderByDescending(x => x.Length).ToList<string>();
@@ -239,8 +238,6 @@ namespace WindowsFormsApplication1
 
             }
             Pole.ColorMass = ColorMass;
-            Pole.words = label8;
-            Pole.puti = label9;
             foreach (Control c in this.Controls)
             {
                 if (c.GetType() == typeof(TextBox))
@@ -266,11 +263,13 @@ namespace WindowsFormsApplication1
                 {
                     if (temp == 0)
                     {
-                        textBox11.Text = st.Substring(0, 1);
-                        textBox12.Text = st.Substring(1, 1);
-                        textBox13.Text = st.Substring(2, 1);
-                        textBox14.Text = st.Substring(3, 1);
-                        textBox15.Text = st.Substring(4, 1);
+                       
+                        textBox11.Text = "б";
+                        textBox12.Text = "а";
+                        textBox13.Text = "л";
+                        textBox14.Text = "д";
+                        textBox15.Text = "а";
+                      
                         textBox11.BackColor = Color.White;
                         textBox12.BackColor = Color.White;
                         textBox13.BackColor = Color.White;
