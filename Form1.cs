@@ -90,12 +90,11 @@ namespace WindowsFormsApplication1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Stopwatch sw = new Stopwatch();
-            sw.Start();
+           
             textBox28.Clear();
             Pole.update();
-           
-            Thread myThread = new Thread(test,1000000000);
+            helpdub1.Clear();
+            Thread myThread = new Thread(test,1800000000);
            
             myThread.Start();
             
@@ -115,16 +114,7 @@ namespace WindowsFormsApplication1
         public void test()
         {
             
-            for (int i = 0; i < 5; i++)
-                for (int j = 0; j < 5; j++)
-                {
-                    if (ColorMass[i, j].Text != "")
-                    {
-                        textboxreadonly.Add(new Tuple<int, int>(i, j));
-                    }
-
-                }
-
+           
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
                 {

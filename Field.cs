@@ -248,25 +248,23 @@ namespace WindowsFormsApplication1
             List<string> pref1 = new List<string>();
             
             p.add(startX, startY);
-           
-            bool add;
-            add = true;
-            if (word=="")
-            {
-                word = "*";
-                addchar = true;
-                pref.AddRange(FindWord3(startX, startY, p, word, addchar));
-                return pref;
-            }       
+
+          
+
+
+                if (word == "")
+                {
+                    word = "*";
+                    addchar = true;
+                    pref.AddRange(FindWord3(startX, startY, p, word, addchar));
+
+                }
 
 
                 var s = Getnextstepfree(startX, startY);
                 for (int i = 0; i < s.Count; i++)
 
                 {
-
-
-
 
                     if (textboxmass[s[i].Item1, s[i].Item2] != "" && p.Test(s[i].Item1, s[i].Item2))
                     {
@@ -284,10 +282,10 @@ namespace WindowsFormsApplication1
                         }
                         pref1 = FindWord3(s[i].Item1, s[i].Item2, p, word, addchar);
                         pref.AddRange(pref1);
-                        add = false;
-                    }
+                    return pref;
+                }
 
-                    if (!word.Contains(itn) && (p.Test(s[i].Item1, s[i].Item2) && textboxmass[s[i].Item1, s[i].Item2] == "") && add)
+                    if (!word.Contains(itn) && (p.Test(s[i].Item1, s[i].Item2) && textboxmass[s[i].Item1, s[i].Item2] == ""))
                     {
 
 
@@ -303,16 +301,13 @@ namespace WindowsFormsApplication1
 
                         }
                         pref1 = FindWord3(s[i].Item1, s[i].Item2, p, (word + itn), addchar);
-                        pref.AddRange(pref1);
-
-
-
-
-
+                    pref.AddRange(pref1);
+                    return pref;
                     }
-                }
+                
+            }
 
-                return pref;   
+            return pref;   
 
         }
 
